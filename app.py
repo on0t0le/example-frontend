@@ -20,11 +20,22 @@ def create_user():
     # Get form data
     name = request.form.get('name')
     email = request.form.get('email')
-
-    requests.post(f"{API_URL}/users", json={
+    
+    # Create new user through API
+    response = requests.post(f"{API_URL}/users", json={
         'name': name,
         'email': email
     })
+    
+    return redirect(url_for('index'))
+
+@app.route('/delete_user/<int:user_id>', methods=['POST'])
+def delete_user(user_id):
+    # Send delete request to API
+    response = requests.delete(f"{API_URL}/users/{user_id}")
+    
+    # Redirect back to index page after deletion
+    return redirect(url_for('index'))
 
     # Redirect back to index page
     return redirect(url_for('index'))

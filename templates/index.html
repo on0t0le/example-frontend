@@ -40,6 +40,11 @@
         <tr>
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
+            <td>
+                <form action="/delete_user/{{ user.id }}" method="post" style="margin: 0">
+                    <input type="submit" value="Delete" style="background-color: #ff4444; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+                </form>
+            </td>
         </tr>
         {% endfor %}
     </table>
