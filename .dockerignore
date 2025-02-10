@@ -1,0 +1,9 @@
+.git/
+docker-compose*
+node_modules/
+*.log
+*.md
+.angular/
+.vscode/
+dist/
+Dockerfile
