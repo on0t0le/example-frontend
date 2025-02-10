@@ -1,9 +1,6 @@
-FROM node:18-alpine AS builder
+FROM python:3.12-slim
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
-RUN npm run build
-
-FROM nginx:alpine
-COPY --from=builder /app/dist/browser/* /usr/share/nginx/html/
+CMD ["python3", "app.py"]

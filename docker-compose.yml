@@ -1,5 +1,8 @@
 services:
   app:
     build: .
+    restart: always
+    environment:
+      API_URL: http://host.docker.internal:8080
     ports:
-      - 8081:80
+      - 8081:8080
